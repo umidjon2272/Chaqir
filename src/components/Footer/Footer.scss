@@ -1,0 +1,161 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.footer {
+  background: $dark-bg;
+  padding: 64px $side-padding 32px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+
+  &__inner { @include container; }
+
+  &__top {
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+
+    @media (max-width: 1024px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 770px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+  }
+
+  &__brand {}
+
+  &__logo {
+    display: block;
+    margin-bottom: 12px;
+    text-decoration: none;
+
+    img {
+      height: 32px;
+      width: auto;
+
+      @media (max-width: 770px) {
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &__tagline {
+    font-size: 13px;
+    color: $gray-4;
+    line-height: 1.65;
+    max-width: 200px;
+    margin-bottom: 20px;
+
+    @media (max-width: 770px) {
+      max-width: 100%;
+      margin: 0 auto 20px;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    @media (max-width: 770px) {
+      justify-content: center;
+    }
+  }
+
+  &__social {
+    width: 34px;
+    height: 34px;
+    background: $dark-card;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: $gray-4;
+    cursor: pointer;
+    transition: $transition;
+    border: 1px solid rgba(255,255,255,0.08);
+
+    &:hover { background: $orange; color: $white; border-color: $orange; }
+  }
+
+  &__col-title {
+    font-size: 11px;
+    font-weight: $fw-medium;
+    color: $gray-3;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  &__col-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @media (max-width: 770px) {
+      align-items: center;
+    }
+  }
+
+  &__col-link {
+    font-size: 14px;
+    color: $gray-4;
+    cursor: pointer;
+    transition: $transition;
+    text-decoration: none;
+    width: fit-content;
+
+    &:hover { color: $white; }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 28px;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    @media (max-width: 770px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__copy {
+    font-size: 13px;
+    color: $gray-5;
+  }
+
+  &__stores {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+
+    @media (max-width: 770px) {
+      justify-content: center;
+    }
+  }
+
+  &__store {
+    font-size: 12px;
+    font-weight: $fw-medium;
+    color: $gray-4;
+    background: $dark-card;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 14px;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: $transition;
+    white-space: nowrap;
+
+    &:hover { background: $orange; border-color: $orange; color: $white; }
+  }
+}

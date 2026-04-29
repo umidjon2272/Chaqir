@@ -1,0 +1,296 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.hero {
+  min-height: 100vh;
+  background: $cream;
+  padding-top: 120px;
+  padding-bottom: 96px;
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(255,107,43,0.12) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  &__inner {
+    @include container;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 216px);
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 300px;
+    max-width: 520px;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: $orange-light;
+    color: $orange-dark;
+    padding: 6px 14px;
+    border-radius: $radius-round;
+    font-size: 13px;
+    font-weight: $fw-medium;
+    margin-bottom: 24px;
+    border: 1px solid $orange-border;
+  }
+
+  &__title {
+    font-size: 48px;
+    font-weight: $fw-medium;
+    color: $black;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+
+    span { color: $orange; }
+
+    /* Planshet */
+    @media (max-width: 1024px) {
+      font-size: 38px;
+    }
+
+    /* Telefon */
+    @media (max-width: 770px) {
+      font-size: 30px;
+    }
+  }
+
+  &__desc {
+    font-size: 16px;
+    color: $gray-5;
+    line-height: 1.72;
+    max-width: 420px;
+    margin-bottom: 32px;
+  }
+
+  &__features {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: $gray-6;
+    font-weight: $fw-medium;
+  }
+
+  &__feature-icon {
+    width: 22px; height: 22px;
+    background: $orange-light;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $orange;
+    font-size: 12px;
+    border: 1px solid $orange-border;
+    flex-shrink: 0;
+  }
+
+  &__stores {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  &__store-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $black;
+    color: $white;
+    padding: 12px 18px;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: $transition;
+    border: none;
+    font-family: $font;
+
+    &:hover { background: $gray-6; transform: translateY(-2px); }
+
+    &__icon { font-size: 18px; }
+    &__texts { text-align: left; line-height: 1.3; }
+    &__small { display: block; font-size: 10px; opacity: 0.55; }
+    &__big { display: block; font-size: 13px; font-weight: $fw-medium; }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 32px;
+    border-top: 1px solid $gray-2;
+    max-width: 380px;
+  }
+
+  &__stat-num { font-size: 24px; font-weight: $fw-medium; color: $black; }
+  &__stat-label { font-size: 12px; color: $gray-4; margin-top: 2px; }
+
+  /* O'NG — telefon */
+  &__visual {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__phone-wrap { position: relative; }
+
+  /* Suzib yuruvchi kartalar */
+  &__float {
+    position: absolute;
+    background: $white;
+    border-radius: $radius-md;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: $shadow-lg;
+    border: 1px solid $gray-2;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: $fw-medium;
+    color: $black;
+    z-index: 10;
+
+    &--top-left { top: 60px; left: -80px; }
+    &--top-right { top: 20px; right: -70px; }
+    &--bottom-right { bottom: 80px; right: -75px; }
+
+    &-icon {
+      width: 28px; height: 28px;
+      background: $orange-light;
+      border-radius: $radius-sm;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+    }
+  }
+
+  &__phone {
+    width: 230px; height: 460px;
+    background: #111;
+    border-radius: 38px;
+    padding: 10px;
+    box-shadow: $shadow-phone;
+    position: relative; z-index: 2;
+  }
+
+  &__phone-screen {
+    width: 100%; height: 100%;
+    background: $cream;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__phone-head {
+    background: $orange;
+    padding: 12px 14px 18px;
+    flex-shrink: 0;
+  }
+
+  &__phone-time {
+    display: flex; justify-content: space-between;
+    font-size: 9px; color: rgba(255,255,255,0.7);
+    margin-bottom: 12px;
+  }
+
+  &__phone-greeting { font-size: 12px; font-weight: $fw-medium; color: $white; margin-bottom: 10px; }
+
+  &__phone-search {
+    background: rgba(255,255,255,0.25);
+    border-radius: $radius-sm;
+    padding: 8px 12px;
+    font-size: 9px; color: rgba(255,255,255,0.8);
+    display: flex; align-items: center; gap: 6px;
+  }
+
+  &__phone-body {
+    padding: 10px; flex: 1; overflow: hidden;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+
+  &__phone-cats { display: flex; gap: 5px; overflow: hidden; }
+
+  &__phone-cat {
+    padding: 4px 9px;
+    border-radius: $radius-round;
+    font-size: 8px; font-weight: $fw-medium;
+    white-space: nowrap;
+    background: $cream-2; color: $gray-4; border: 1px solid $gray-2;
+    flex-shrink: 0;
+
+    &--active { background: $orange; color: $white; border-color: $orange; }
+  }
+
+  &__phone-cards { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+
+  &__phone-card {
+    background: $white;
+    border-radius: 10px;
+    padding: 9px 10px;
+    display: flex; align-items: center; gap: 8px;
+    border: 1px solid $gray-2;
+  }
+
+  &__phone-avatar {
+    width: 36px; height: 36px;
+    background: $orange-light;
+    border-radius: $radius-sm;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 17px; flex-shrink: 0;
+  }
+
+  &__phone-name { font-size: 9px; font-weight: $fw-medium; color: $black; margin-bottom: 2px; }
+  &__phone-spec { font-size: 8px; color: $gray-3; margin-bottom: 1px; }
+  &__phone-dist { font-size: 8px; color: $gray-3; }
+  &__phone-rating { font-size: 9px; font-weight: $fw-medium; color: $orange; margin-left: auto; flex-shrink: 0; }
+
+  &__phone-nav {
+    border-top: 1px solid $gray-2;
+    padding: 8px 0 10px;
+    display: flex; justify-content: space-around;
+    background: $cream; flex-shrink: 0;
+  }
+
+  &__phone-nav-icon { font-size: 16px; opacity: 0.28; color: $black; &--active { opacity: 1; color: $orange; } }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 770px) {
+    padding-top: 100px;
+    padding-bottom: 64px;
+
+    &__inner { flex-direction: column; gap: 48px; }
+    &__content { max-width: 100%; }
+    &__float--top-left { left: -10px; }
+    &__float--top-right { right: -10px; }
+    &__float--bottom-right { display: none; }
+  }
+}

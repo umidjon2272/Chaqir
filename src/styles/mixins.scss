@@ -1,0 +1,53 @@
+@use 'variables' as *;
+
+/* Container */
+@mixin container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: $side-padding;
+  padding-right: $side-padding;
+  width: 100%;
+}
+
+/* Flex yordamchilar */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-start($gap: 0px) {
+  display: flex;
+  align-items: center;
+  @if $gap != 0px { gap: $gap; }
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Tugma */
+@mixin button($bg, $color, $bg-hover) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: $bg;
+  color: $color;
+  border: none;
+  border-radius: $radius-md;
+  padding: 13px 24px;
+  font-family: $font;
+  font-size: 15px;
+  font-weight: $fw-medium;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background: $bg-hover;
+    transform: translateY(-2px);
+  }
+  &:active { transform: translateY(0); }
+}

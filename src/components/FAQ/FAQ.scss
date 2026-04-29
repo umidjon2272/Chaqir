@@ -1,0 +1,129 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.faq {
+  background: $cream-2;
+  padding: 96px $side-padding;
+  border-top: 1px solid $gray-2;
+
+  &__inner {
+    @include container;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 80px;
+    align-items: flex-start;
+
+    @media (max-width: 1024px) { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  &__left {
+    position: sticky;
+    top: 90px;
+
+    @media (max-width: 1024px) { position: static; }
+  }
+
+  &__title {
+    font-size: 36px;
+    font-weight: $fw-medium;
+    color: $black;
+    letter-spacing: -0.3px;
+    margin-bottom: 16px;
+  }
+
+  &__desc {
+    font-size: 15px;
+    color: $gray-4;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  &__contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: $orange-light;
+    color: $black;
+    border: 1px solid $orange-border;
+    border-radius: $radius-md;
+    padding: 13px 20px;
+    font-size: 14px;
+    font-weight: $fw-medium;
+    cursor: pointer;
+    transition: $transition;
+    font-family: $font;
+    width: fit-content;
+
+    &:hover { background: $orange; color: $white; border-color: $orange; }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    border: 1px solid $gray-2;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: $cream;
+    transition: $transition;
+
+    &--open {
+      background: $white;
+      border-color: $orange-border;
+      box-shadow: $shadow-sm;
+
+      .faq__icon {
+        background: $orange;
+        color: $white;
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    cursor: pointer;
+    user-select: none;
+    gap: 16px;
+  }
+
+  &__q-text {
+    font-size: 15px;
+    font-weight: $fw-medium;
+    color: $black;
+    line-height: 1.4;
+  }
+
+  &__icon {
+    width: 30px;
+    height: 30px;
+    background: $gray-1;
+    border-radius: $radius-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: $gray-4;
+    transition: $transition;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  &__answer {
+    padding: 0 24px 20px;
+    font-size: 14px;
+    color: $gray-5;
+    line-height: 1.75;
+    display: none;
+
+    &--open { display: block; }
+  }
+
+  @media (max-width: 770px) { padding: 64px $side-padding; }
+}

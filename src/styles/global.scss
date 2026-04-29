@@ -1,0 +1,124 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+/* ========================
+   FONTLAR
+   ======================== */
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('../assets/fonts/Roboto-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ========================
+   RESET
+   ======================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: $font;
+  font-size: 16px;
+  color: $black;
+  background: $cream;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: $cream;
+}
+
+h1, h2, h3, h4 {
+  font-weight: $fw-medium;
+  line-height: 1.2;
+  color: $black;
+}
+
+p {
+  color: $gray-5;
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: $transition;
+}
+
+button {
+  font-family: $font;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul { list-style: none; }
+
+/* ========================
+   UMUMIY KLASSLAR
+   ======================== */
+
+/* Container */
+.container {
+  @include container;
+}
+
+/* Section bo'lim nomi */
+.section-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: $fw-medium;
+  color: $orange-dark;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: $orange-light;
+  padding: 4px 12px;
+  border-radius: $radius-round;
+  border: 1px solid $orange-border;
+  margin-bottom: 16px;
+}
+
+/* Tugmalar */
+.btn-orange {
+  @include button($orange, $white, $orange-dark);
+  box-shadow: $shadow-orange;
+}
+
+.btn-outline {
+  @include button(transparent, $black, $gray-1);
+  border: 1.5px solid $gray-2;
+}
+
+.btn-dark {
+  @include button($black, $white, $gray-6);
+}
+
+.btn-ghost {
+  @include button(rgba(255,255,255,0.12), $white, rgba(255,255,255,0.2));
+  border: 1.5px solid rgba(255,255,255,0.2);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: $cream-2; }
+::-webkit-scrollbar-thumb { background: $gray-3; border-radius: $radius-round; }

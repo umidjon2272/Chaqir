@@ -1,0 +1,226 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 68px;
+  transition: $transition-slow;
+
+  &--scrolled {
+    background: rgba(250, 248, 244, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid $gray-2;
+    box-shadow: $shadow-sm;
+  }
+
+  &__inner {
+    @include container;
+    @include flex-between;
+    height: 68px;
+  }
+
+  &__logo {
+    @include flex-start(10px);
+    text-decoration: none;
+
+    img { height: 36px; width: auto; }
+  }
+
+  &__links {
+    @include flex-start(4px);
+
+    /* Mobileda yashirinadi */
+    @media (max-width: 770px) {
+      display: none;
+    }
+  }
+
+  &__link {
+    font-size: 14px;
+    font-weight: $fw-medium;
+    color: $gray-5;
+    padding: 8px 14px;
+    border-radius: $radius-sm;
+    cursor: pointer;
+    transition: $transition;
+    text-decoration: none;
+    display: block;
+
+    &:hover, &.active { color: $black; background: $cream-2; }
+  }
+
+  &__right {
+    @include flex-start(10px);
+  }
+
+  /* Til tugmasi */
+  &__lang {
+    @include flex-start(6px);
+    background: $cream-2;
+    border: 1px solid $gray-2;
+    border-radius: $radius-sm;
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: $fw-medium;
+    color: $gray-6;
+    cursor: pointer;
+    transition: $transition;
+    font-family: $font;
+
+    &:hover { background: $gray-1; }
+
+    &--active {
+      background: $orange-light;
+      border-color: $orange-border;
+      color: $orange-dark;
+    }
+  }
+
+  &__download {
+    @include flex-start(8px);
+    background: $orange;
+    color: $white;
+    font-size: 14px;
+    font-weight: $fw-medium;
+    padding: 10px 20px;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: $transition;
+    box-shadow: $shadow-orange;
+    border: none;
+    white-space: nowrap;
+    font-family: $font;
+
+    &:hover { background: $orange-dark; transform: translateY(-1px); }
+
+    /* Mobileda yashirinadi */
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
+
+  /* Burger — faqat mobileda */
+  &__burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: $radius-sm;
+    border: none;
+    background: none;
+    transition: $transition;
+
+    span {
+      display: block;
+      height: 2px;
+      background: $black;
+      border-radius: $radius-round;
+      transition: $transition;
+
+      &:nth-child(1) { width: 20px; }
+      &:nth-child(2) { width: 14px; }
+      &:nth-child(3) { width: 20px; }
+    }
+
+    &--open span {
+      &:nth-child(1) { width: 20px; transform: translateY(7px) rotate(45deg); }
+      &:nth-child(2) { opacity: 0; }
+      &:nth-child(3) { width: 20px; transform: translateY(-7px) rotate(-45deg); }
+    }
+
+    &:hover { background: $gray-1; }
+
+    @media (max-width: 770px) {
+      display: flex;
+    }
+  }
+}
+
+/* Mobile overlay menyu */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &--open {
+    pointer-events: all;
+    opacity: 1;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(26, 18, 8, 0.5);
+    backdrop-filter: blur(3px);
+  }
+
+  &__panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background: $cream;
+    border-left: 1px solid $gray-2;
+    padding: 80px 20px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    box-shadow: -8px 0 32px rgba(26, 18, 8, 0.12);
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+  }
+
+  &--open &__panel {
+    transform: translateX(0);
+  }
+
+  &__link {
+    display: block;
+    font-size: 16px;
+    font-weight: $fw-medium;
+    color: $gray-6;
+    padding: 13px 16px;
+    border-radius: $radius-md;
+    cursor: pointer;
+    transition: $transition;
+    text-decoration: none;
+
+    &:hover, &.active { color: $black; background: $cream-2; }
+  }
+
+  &__divider { height: 1px; background: $gray-2; margin: 8px 0; }
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: $orange;
+    color: $white;
+    font-size: 15px;
+    font-weight: $fw-medium;
+    padding: 14px 20px;
+    border-radius: $radius-md;
+    cursor: pointer;
+    border: none;
+    font-family: $font;
+    transition: $transition;
+    box-shadow: $shadow-orange;
+    margin-top: 8px;
+
+    &:hover { background: $orange-dark; }
+    &--dark { background: $black; box-shadow: none; margin-top: 8px; }
+  }
+}

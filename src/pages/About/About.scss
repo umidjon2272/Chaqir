@@ -1,0 +1,141 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.about-page {
+  padding-top: 100px;
+
+  &__hero {
+    background: $cream;
+    border-bottom: 1px solid $gray-2;
+    padding: 80px $side-padding;
+
+    &-inner { @include container; max-width: 680px; }
+
+    &-title {
+      font-size: 48px;
+      font-weight: $fw-medium;
+      color: $black;
+      letter-spacing: -0.4px;
+      margin-bottom: 20px;
+      line-height: 1.15;
+
+      @media (max-width: 770px) { font-size: 32px; }
+    }
+
+    &-desc { font-size: 18px; color: $gray-5; line-height: 1.75; }
+  }
+
+  &__mission {
+    background: $cream-2;
+    border-bottom: 1px solid $gray-2;
+    padding: 96px $side-padding;
+
+    &-inner {
+      @include container;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+
+      @media (max-width: 1024px) { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    &-title {
+      font-size: 32px;
+      font-weight: $fw-medium;
+      color: $black;
+      margin-bottom: 20px;
+      line-height: 1.2;
+
+      span { color: $orange; }
+    }
+
+    &-text { font-size: 15px; color: $gray-5; line-height: 1.8; margin-bottom: 16px; }
+
+    &-visual {
+      background: $orange-light;
+      border: 1px solid $orange-border;
+      border-radius: $radius-2xl;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 96px;
+      opacity: 0.8;
+    }
+  }
+
+  &__stats {
+    background: $dark-bg;
+    padding: 80px $side-padding;
+
+    &-inner { @include container; }
+
+    &-title { font-size: 28px; font-weight: $fw-medium; color: $white; text-align: center; margin-bottom: 48px; }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+
+      @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+      @media (max-width: 770px) { grid-template-columns: 1fr; }
+    }
+
+    &-card {
+      background: $dark-card;
+      border: 1px solid $dark-border;
+      border-radius: $radius-xl;
+      padding: 32px 24px;
+      text-align: center;
+      transition: $transition;
+
+      &:hover { border-color: rgba(255,107,43,0.3); }
+    }
+
+    &-num { font-size: 36px; font-weight: $fw-medium; color: $orange; margin-bottom: 8px; }
+    &-label { font-size: 13px; color: $gray-4; }
+  }
+
+  &__values {
+    background: $cream;
+    border-top: 1px solid $gray-2;
+    padding: 96px $side-padding;
+
+    &-inner { @include container; }
+
+    &-header { text-align: center; margin-bottom: 56px; }
+    &-title { font-size: 36px; font-weight: $fw-medium; color: $black; margin-bottom: 12px; }
+    &-desc { font-size: 16px; color: $gray-4; }
+
+    &-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+
+      @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); }
+      @media (max-width: 770px) { grid-template-columns: 1fr; }
+    }
+
+    &-card {
+      background: $cream-2;
+      border: 1px solid $gray-2;
+      border-radius: $radius-xl;
+      padding: 32px;
+      transition: $transition;
+
+      &:hover { border-color: $orange-border; background: $orange-light; }
+    }
+
+    &-icon { font-size: 36px; margin-bottom: 16px; }
+    &-card-title { font-size: 16px; font-weight: $fw-medium; color: $black; margin-bottom: 8px; }
+    &-card-desc { font-size: 14px; color: $gray-5; line-height: 1.7; }
+  }
+
+  @media (max-width: 770px) {
+    &__hero, &__mission, &__stats, &__values {
+      padding-top: 64px;
+      padding-bottom: 64px;
+    }
+  }
+}
